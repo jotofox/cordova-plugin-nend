@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <plugin xmlns="http://apache.org/cordova/ns/plugins/1.0"
-        id="com.effers.kaky.nend" version="0.1.0">
+        id="com.effers.kaky.nend" version="0.2.0">
     <name>Nend</name>
     <description>Cordova Nend Plugin</description>
     <license>Apache 2.0</license>
@@ -9,6 +9,7 @@
     <js-module src="www/nend.js" name="Nend">
         <clobbers target="Nend" />
     </js-module>
+    <dependency id="cordova-plugin-cocoapod-support"/>
 
     <platform name="android">
         <config-file target="res/xml/config.xml" parent="/*">
@@ -22,9 +23,8 @@
         </config-file>
 
         <source-file src="src/android/Nend.java" target-dir="src/com/effers/kaky/nend" />
-        <source-file src="src/android/NendAd/nendSDK-2.6.1.jar" target-dir="libs" />
-
         <framework src="com.google.android.gms:play-services-ads:+" />
+        <framework src="net.nend.android:nend-sdk:+" />
      </platform>
 
     <platform name="ios">
@@ -37,12 +37,10 @@
         <header-file src="src/ios/CDVNend.h" />
         <source-file src="src/ios/CDVNend.m" />
 
-        <header-file src="src/ios/NendAd/NADView.h" />
-        <header-file src="src/ios/NendAd/NADInterstitial.h" />
-        <source-file src="src/ios/NendAd/libNendAd.a" framework="true" />
-
         <framework src="AdSupport.framework"/>
         <framework src="Security.framework"/>
         <framework src="ImageIO.framework"/>
+        <!-- use latest -->
+        <pod name="NendSDK_iOS" />
     </platform>
 </plugin>
